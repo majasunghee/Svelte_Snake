@@ -1,5 +1,5 @@
 <script>
-	import { pickRandomOpenSpace } from "$lib/game-helpers.js";
+	import { pickRandomOpenSpace, convertKeyboardKeyToDirection, DIRECTION_TO_VECTOR, add} from "$lib/game-helpers.js";
 
 	const TICK_TIME = 100;
 	const BOARD_DIMENSIONS = { x: 20, y: 20 };
@@ -19,9 +19,21 @@
 			coordinate.y * CELL_SIZE
 		}px`;
 	}
+
+	function onKeyDown(event) {
+		//console.log(convertKeyboardKeyToDirection(event.key));
+		const keyDirection = convertKeyboardKeyToDirection(event.key);
+		if (!keyDirection) {
+			return;
+		}
+		//console.log(DIRECTION_TO_VECTOR[keyDirection]);
+		const headCoordinate = snake[0];
+		const nextHead = add(headCoordinate, DIRECTION_TO_VECTOR[keyDirection]);
+		snake = [nextHead, ...snake.slice(0, snake.length - 1)];
+	};
 </script>
 
-<svelte:body on:keydown={console.log} />
+<svelte:body on:keydown={onKeyDown} />
 
 <div class="main-content min-width">
 	<div class="score">{score}</div>

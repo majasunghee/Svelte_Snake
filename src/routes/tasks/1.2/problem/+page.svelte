@@ -11,6 +11,7 @@
 	let score = 0;
 
 	const CELL_SIZE = 25;
+
 </script>
 
 <div class="main-content min-width">
@@ -20,7 +21,14 @@
 		class="board"
 		style="--cell-size: {CELL_SIZE}px; --tick-time: {TICK_TIME}ms; --board-size-x: {BOARD_DIMENSIONS.x}; --board-size-y: {BOARD_DIMENSIONS.y}"
 	>
-		<div class="body-part" />
+
+
+	{#each snake as coord}
+		<div class="body-part" 
+		style="left: {coord.x*CELL_SIZE}px; top: {coord.y*CELL_SIZE}px;"
+		/>
+	{/each}
+
 
 		<div
 			style="left: {apple.x * CELL_SIZE}px; top: {apple.y * CELL_SIZE}px"
@@ -28,6 +36,7 @@
 		/>
 	</div>
 </div>
+
 
 <style>
 	.modal-container {

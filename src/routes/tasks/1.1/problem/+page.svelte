@@ -22,7 +22,9 @@
 	>
 		<div class="body-part" />
 
-		<div class="apple" />
+		<div class="apple"
+		style="top: {apple.x*CELL_SIZE}px; left: {apple.y*CELL_SIZE}px;"
+		></div>
 	</div>
 </div>
 

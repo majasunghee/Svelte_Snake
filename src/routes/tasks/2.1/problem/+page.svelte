@@ -21,6 +21,10 @@
 	}
 </script>
 
+<svelte:body
+	on:keydown={console.log}
+/>
+
 <div class="main-content min-width">
 	<div class="score">{score}</div>
 

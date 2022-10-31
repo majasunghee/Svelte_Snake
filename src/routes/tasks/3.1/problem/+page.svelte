@@ -4,6 +4,7 @@
 		convertKeyboardKeyToDirection,
 		getNextSnake,
 		pickRandomOpenSpace,
+		isEqual,
 	} from "$lib/game-helpers.js";
 
 	const TICK_TIME = 100;
@@ -33,6 +34,9 @@
 			coordinate.y * CELL_SIZE
 		}px`;
 	}
+	$: if (isEqual(apple, snake[0])) {
+			score += 1;
+		}
 </script>
 
 <svelte:body on:keydown={handleKeydown} />

@@ -11,6 +11,11 @@
 	let score = 0;
 
 	const CELL_SIZE = 25;
+
+	function calculatePositionAsStyle(coordinate) {
+		return `left: ${coordinate.x * CELL_SIZE}px; top: ${coordinate.y * CELL_SIZE}px`
+	}
+
 </script>
 
 <div class="main-content min-width">
@@ -23,13 +28,12 @@
 		{#each snake as bodyPart}
 			<div
 				class="body-part"
-				style="left: {bodyPart.x * CELL_SIZE}px; top: {bodyPart.y *
-					CELL_SIZE}px"
+				style={calculatePositionAsStyle(bodyPart)}
 			/>
 		{/each}
 
 		<div
-			style="left: {apple.x * CELL_SIZE}px; top: {apple.y * CELL_SIZE}px"
+			style= {calculatePositionAsStyle(apple)}
 			class="apple"
 		/>
 	</div>
